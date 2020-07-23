@@ -1,0 +1,2 @@
+[![Build Status](https://travis-ci.org/Kaytbode/Translate.svg?branch=master)](https://travis-ci.org/Kaytbode/Translate)  
+[![Coverage Status](https://coveralls.io/repos/github/Kaytbode/Translate/badge.svg)](https://coveralls.io/github/Kaytbode/Translate)
