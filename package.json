@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.5",
-    "@babel/register": "^7.10.5"
+    "@babel/register": "^7.10.5",
+    "mongoose": "^5.9.25"
   }
 }
