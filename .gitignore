@@ -6,3 +6,6 @@ node_modules/
 
 # secret codes
 .env
+
+# babel builds
+dist/

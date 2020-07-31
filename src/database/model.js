@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { User } from 'schema';
+import { User } from './schema';
 
-const user = mongoose.model('User', User);
+const userModel = mongoose.model('User', User);
 
 
-export { user }
+export { userModel }
