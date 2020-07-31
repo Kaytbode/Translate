@@ -1,4 +1,4 @@
-import userModel from '../database/model';
+import { userModel } from '../database/model';
 
 const newUser = async (user) => {
     try {

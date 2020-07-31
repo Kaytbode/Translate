@@ -4,7 +4,8 @@
     badRequest: 400,
     notFound: 404,
     unauthorized: 401,
-    serverError: 500
+    serverError: 500,
+    unprocessableEntity: 422
   }
 
   export default statusCodes

@@ -20,4 +20,4 @@ const successResponse = (res, statusCode, message) => {
   });
 }
 
-export { errorResponse, successResponse, successResponse }
+export { errorResponse, successResponseWithData, successResponse }

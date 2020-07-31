@@ -9,14 +9,13 @@ const db = process.env.DB;
 
 const URI = `mongodb+srv://${user}:${pw}@sandbox-azhmt.mongodb.net/${db}?retryWrites=true&w=majority`;
 
-mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(URI, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 
 const { Schema } = mongoose;
 
 const User = new Schema({
     name: {
-        first: String,
-        last: String,
+        type: String,
         required: true
       },
     email: {

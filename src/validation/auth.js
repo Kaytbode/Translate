@@ -16,14 +16,6 @@ const signUpValidationRules = [
         const user = await findUser(userEmail);
         if(user) throw new Error (messages.emailExists);
     }),
-  check('password')
-    .isLength({ min: 8 })
-    .withMessage(messages.shortPassword)
-    .custom((value, { req }) => {
-        if(value !== req.body.confirmPassword ){
-            throw new Error(messages.noMatch);
-        }
-    }),
   check('firstName')
     .not()
     .isEmpty()
@@ -31,7 +23,15 @@ const signUpValidationRules = [
   check('lastName')
     .not()
     .isEmpty()
-    .withMessage(messages.emptyField)
+    .withMessage(messages.emptyField),
+  check('password')
+    .isLength({ min: 8 })
+    .withMessage(messages.shortPassword)
+    .custom(async (value, { req }) => {
+        if(value !== req.body.confirmPassword ){
+            throw new Error(messages.noMatch);
+        }
+  })
 ]
 
 const validateResult = (req, res, next) => {
@@ -44,7 +44,7 @@ const validateResult = (req, res, next) => {
     const extractedErrors = [];
     errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
 
-    return errorResponse(res, statusCodes.badRequest, extractedErrors);
+    return errorResponse(res, statusCodes.unprocessableEntity, extractedErrors);
 }
 
 export { validateResult, signUpValidationRules }
