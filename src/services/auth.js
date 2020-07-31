@@ -1,13 +1,5 @@
 import { userModel } from '../database/model';
 
-const newUser = async (user) => {
-    try {
-        return await user.save();
-    }catch(err){
-        throw err;
-    }
-}
-
 const findUser = async (userEmail) => {
     try {
         return await userModel.findOne({email: userEmail}).exec();
@@ -16,4 +8,4 @@ const findUser = async (userEmail) => {
     }
 }
 
-export { newUser, findUser }
+export { findUser }

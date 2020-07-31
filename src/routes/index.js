@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { createUser } from '../controllers/auth';
-import { signUpValidationRules, validateResult } from '../validation/auth';
+import { createUser, loginUser } from '../controllers/auth';
+import { signUpValidationRules, loginValidationRules, validateResult } from '../validation/auth';
 
 const routes = Router();
 
 routes.post('/auth/signup', signUpValidationRules, validateResult, createUser);
+routes.post('/auth/login', loginValidationRules, validateResult, loginUser);
 
 export default routes;

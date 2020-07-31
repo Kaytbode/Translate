@@ -4,7 +4,9 @@ const messages = {
     emailExists: 'Email already in use',
     shortPassword: 'Password should be a minimum of 8 characters',
     noMatch: 'Password confirmation does not match password',
-    created: 'User successfully signed up'
+    created: 'User successfully signed up',
+    login: 'User successfully logged in',
+    wrongPassword: 'Please enter the correct password'
 }
 
 export default messages
