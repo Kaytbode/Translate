@@ -34,6 +34,18 @@ const signUpValidationRules = [
   })
 ]
 
+const loginValidationRules = [
+  check('email')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField)
+    .isEmail()
+    .withMessage(messages.invalidEmail),
+  check('password')
+    .isLength({ min: 8 })
+    .withMessage(messages.shortPassword)
+]
+
 const validateResult = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -47,4 +59,4 @@ const validateResult = (req, res, next) => {
     return errorResponse(res, statusCodes.unprocessableEntity, extractedErrors);
 }
 
-export { validateResult, signUpValidationRules }
+export { validateResult, signUpValidationRules, loginValidationRules }

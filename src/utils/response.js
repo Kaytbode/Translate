@@ -9,14 +9,14 @@ const successResponseWithData = (res, statusCode, message, data) => {
     return res.status(statusCode).send({
         statusCode,
         data,
-        message,
+        message
     });
 }
 
 const successResponse = (res, statusCode, message) => {
     return res.status(statusCode).send({
         statusCode,
-        message,
+        message
   });
 }
 
