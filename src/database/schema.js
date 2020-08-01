@@ -32,5 +32,22 @@ const User = new Schema({
     }
 });
 
+const Phrase = new Schema({
+  english: {
+    type: String,
+    required: true
+  },
+  yoruba: {
+    type: String,
+    required: true
+  },
+  link: {
+    type: String,
+    required: true
+  }
 
-export { User }
+});
+
+Phrase.index({english: 'text'});
+
+export { User, Phrase }
