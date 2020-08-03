@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
-import { User } from './schema';
+import { User, Phrase } from './schema';
 
 const userModel = mongoose.model('User', User);
+const phraseModel = mongoose.model('Phrase', Phrase);
 
 
-export { userModel }
+export { userModel, phraseModel }
