@@ -28,6 +28,7 @@
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
     "@babel/register": "^7.10.5",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
