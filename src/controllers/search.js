@@ -6,12 +6,14 @@ import { findPhrase } from '../services/search';
 
 const createPhrase = async (req, res) => {
     try {
-        const { english, yoruba, link } = req.body;
+        const { english, yor_explanation, yor_spoken, yor_intonation, yor_video } = req.body;
 
         const phrase = new phraseModel({
             english,
-            yoruba,
-            link
+            yor_explanation,
+            yor_spoken,
+            yor_intonation,
+            yor_video
         });
 
         const phraseData = await phrase.save();
@@ -25,9 +27,9 @@ const createPhrase = async (req, res) => {
 
 const searchPhrase = async (req, res) => {
     try {
-        const { english } = req.body;
+        const { searchPhrase } = req.params;
 
-        const phraseData = await findPhrase(english);
+        const phraseData = await findPhrase(searchPhrase);
 
         successResponseWithData(res, statusCodes.success, messages.found, phraseData);
 

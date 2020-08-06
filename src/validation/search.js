@@ -1,4 +1,4 @@
-import { check, validationResult } from 'express-validator';
+import { check, param } from 'express-validator';
 import messages from '../utils/message';
 
 const createPhraseValidationRules = [
@@ -6,18 +6,26 @@ const createPhraseValidationRules = [
     .not()
     .isEmpty()
     .withMessage(messages.emptyField),
-  check('yoruba')
+  check('yor_explanation')
     .not()
     .isEmpty()
     .withMessage(messages.emptyField),
-  check('link')
+  check('yor_spoken')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_intonation')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_video')
     .not()
     .isEmpty()
     .withMessage(messages.emptyField),
 ]
 
 const searchPhraseValidationRules = [
-  check('english')
+  param('searchPhrase')
     .not()
     .isEmpty()
     .withMessage(messages.emptyField)

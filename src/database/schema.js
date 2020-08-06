@@ -33,15 +33,23 @@ const User = new Schema({
 });
 
 const Phrase = new Schema({
-  english: {
+  english : {
     type: String,
     required: true
   },
-  yoruba: {
+  yor_explanation: {
     type: String,
     required: true
   },
-  link: {
+  yor_spoken: {
+    type: String,
+    required: true
+  },
+  yor_intonation: {
+    type: String,
+    required: true
+  },
+  yor_video: {
     type: String,
     required: true
   }
