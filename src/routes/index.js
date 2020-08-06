@@ -6,6 +6,8 @@ import { createPhraseValidationRules, searchPhraseValidationRules } from '../val
 
 const routes = Router();
 
+routes.get('/', (req, res) => res.status(200).send('Welcome to translate'));
+
 routes.post('/auth/signup', signUpValidationRules, validateResult, createUser);
 routes.post('/auth/login', loginValidationRules, validateResult, loginUser);
 routes.post('/phrase/create', createPhraseValidationRules, validateResult, createPhrase);
