@@ -8,6 +8,7 @@ const messages = {
     phraseAdded: 'Phrase successfully added',
     login: 'User successfully logged in',
     found: 'search results found',
+    notFound: 'Translation not found',
     wrongPassword: 'Please enter the correct password'
 }
 

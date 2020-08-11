@@ -1,4 +1,4 @@
-import { phraseModel } from '../database/model';
+import { phraseModel, missingModel } from '../database/model';
 
 const findPhrase = async (phrase) => {
     try {
@@ -12,4 +12,12 @@ const findPhrase = async (phrase) => {
     }
 }
 
-export { findPhrase }
+const findMissingPhrases = async () => {
+    try {
+        return await missingModel.find({});
+    }catch(err){
+        throw err;
+    }
+}
+
+export { findPhrase, findMissingPhrases }
