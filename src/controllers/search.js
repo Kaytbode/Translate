@@ -32,7 +32,7 @@ const searchPhrase = async (req, res) => {
 
         if (phraseData.length < 1) {
             const missingPhrase = new missingModel({
-                searchPhrase
+                english: searchPhrase
             });
             
             const missingPhraseData = await missingPhrase.save();
