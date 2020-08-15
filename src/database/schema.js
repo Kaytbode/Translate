@@ -58,4 +58,12 @@ const Phrase = new Schema({
 
 Phrase.index({english: 'text'});
 
-export { User, Phrase }
+const Missing = new Schema({
+  english : {
+    type: String,
+    required: true
+  }
+
+});
+
+export { User, Phrase, Missing }
