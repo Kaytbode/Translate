@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { userModel } from '../database/model';
 import { successResponseWithData, errorResponse } from '../utils/response';
 import statusCodes from '../utils/status';
@@ -8,11 +9,15 @@ const createUser = async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body;
         const name = `${firstName} ${lastName}`;
+        const saltRounds = 10;
+
+        const passwordHash = await bcrypt.hash(password, saltRounds);
 
         const user = new userModel({
             name,
             email,
-            password
+            password: passwordHash,
+            role: 'user'
         });
 
         const userData = await user.save();
@@ -30,7 +35,9 @@ const loginUser = async (req, res) => {
 
         const userData = await findUser(email);
 
-        if (userData.password !== password ) {
+        const match = await bcrypt.compare(password, userData.password);
+
+        if (!match ) {
             errorResponse(res, error.statusCode || statusCodes.unauthorized, messages.wrongPassword);
         }
 

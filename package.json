@@ -30,6 +30,7 @@
     "@babel/core": "^7.10.5",
     "@babel/polyfill": "^7.10.4",
     "@babel/register": "^7.10.5",
+    "bcrypt": "^5.0.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
