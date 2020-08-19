@@ -38,7 +38,7 @@ const loginUser = async (req, res) => {
         const match = await bcrypt.compare(password, userData.password);
 
         if (!match ) {
-            errorResponse(res, error.statusCode || statusCodes.unauthorized, messages.wrongPassword);
+            errorResponse(res, statusCodes.unauthorized, messages.wrongPassword);
         }
 
         req.session.userId = userData._id;
