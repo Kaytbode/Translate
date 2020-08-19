@@ -9,7 +9,8 @@ const db = process.env.DB;
 
 const URI = `mongodb+srv://${user}:${pw}@sandbox-azhmt.mongodb.net/${db}?retryWrites=true&w=majority`;
 
-mongoose.connect(URI, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+const dbConnection = mongoose.createConnection(URI, 
+  {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 
 const { Schema } = mongoose;
 
@@ -70,4 +71,4 @@ const Missing = new Schema({
 
 });
 
-export { User, Phrase, Missing }
+export { User, Phrase, Missing, dbConnection }

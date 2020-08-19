@@ -41,6 +41,9 @@ const loginUser = async (req, res) => {
             errorResponse(res, error.statusCode || statusCodes.unauthorized, messages.wrongPassword);
         }
 
+        req.session.userId = userData._id;
+        req.session.userRole = userData.role;
+
         successResponseWithData(res, statusCodes.success, messages.login, userData);
 
     }catch(error) {

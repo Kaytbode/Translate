@@ -1,9 +1,8 @@
-import mongoose from 'mongoose';
-import { User, Phrase, Missing } from './schema';
+import { User, Phrase, Missing, dbConnection } from './schema';
 
-const userModel = mongoose.model('User', User);
-const phraseModel = mongoose.model('Phrase', Phrase);
-const missingModel = mongoose.model('Missing', Missing);
+const userModel = dbConnection.model('User', User);
+const phraseModel = dbConnection.model('Phrase', Phrase);
+const missingModel = dbConnection.model('Missing', Missing);
 
 
 export { userModel, phraseModel, missingModel }
