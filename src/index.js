@@ -21,18 +21,19 @@ const sessionStore = new MongoStore({
     collection: 'sessions'
 });
 
+const { SESS_NAME, SESS_SECRET, PORT } = process.env;
+
 app.use(session({
-    name: 'TransId',
+    name: SESS_NAME,
     resave: false,
     saveUninitialized: true,
-    secret: 'defrff#@4%AH',
+    secret: SESS_SECRET,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60,
-        secure: true
+        maxAge: 1000 * 60 * 60
     }
 }));
 
 app.use('/', routes);
 
-app.listen(process.env.PORT);
+app.listen(PORT);

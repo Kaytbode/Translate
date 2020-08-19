@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser, loginUser } from '../controllers/auth';
+import { createUser, loginUser, logoutUser } from '../controllers/auth';
 import { createPhrase, searchPhrase, getMissingPhrases } from '../controllers/search';
 import { signUpValidationRules, loginValidationRules, validateResult } from '../validation/auth';
 import { createPhraseValidationRules, searchPhraseValidationRules } from '../validation/search';
@@ -14,5 +14,6 @@ routes.post('/auth/login', loginValidationRules, validateResult, loginUser);
 routes.post('/phrase/create', adminSession, createPhraseValidationRules, validateResult, createPhrase);
 routes.get('/phrase/search/:searchPhrase', userSession, searchPhraseValidationRules, validateResult, searchPhrase);
 routes.get('/phrase/missing', adminSession, getMissingPhrases);
+routes.post('/logout', userSession, logoutUser);
 
 export default routes;

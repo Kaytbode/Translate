@@ -10,7 +10,9 @@ const messages = {
     found: 'search results found',
     notFound: 'Translation not found',
     wrongPassword: 'Please enter the correct password',
-    unauthorized: 'You are not authorized to view this page'
+    unauthorized: 'You are not authorized to view this page',
+    logoutError: 'Logout not successful, try again',
+    logout: 'User successfully logged out'
 }
 
 export default messages
