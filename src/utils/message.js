@@ -12,7 +12,9 @@ const messages = {
     wrongPassword: 'Please enter the correct password',
     unauthorized: 'You are not authorized to view this page',
     logoutError: 'Logout not successful, try again',
-    logout: 'User successfully logged out'
+    logout: 'User successfully logged out',
+    updated: 'Entry successfully updated',
+    deleted: 'Entry successfully deleted'
 }
 
 export default messages

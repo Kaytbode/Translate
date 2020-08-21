@@ -31,4 +31,43 @@ const searchPhraseValidationRules = [
     .withMessage(messages.emptyField)
 ]
 
-export { createPhraseValidationRules, searchPhraseValidationRules }
+const editPhraseValidationRules = [
+  check('_id')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('english')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_explanation')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_spoken')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_intonation')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+  check('yor_video')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField),
+]
+
+const delPhraseValidationRules = [
+  check('_id')
+    .not()
+    .isEmpty()
+    .withMessage(messages.emptyField)
+]
+
+export { 
+  createPhraseValidationRules, 
+  searchPhraseValidationRules, 
+  editPhraseValidationRules, 
+  delPhraseValidationRules 
+}

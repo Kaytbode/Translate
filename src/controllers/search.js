@@ -2,7 +2,8 @@ import { phraseModel, missingModel } from '../database/model';
 import { successResponseWithData, errorResponse } from '../utils/response';
 import statusCodes from '../utils/status';
 import messages from '../utils/message';
-import { findPhrase, findMissingPhrases } from '../services/search';
+import { 
+    findPhrase, findMissingPhrases, findAllPhrases, updatePhrase, deletePhrase } from '../services/search';
 
 const createPhrase = async (req, res) => {
     try {
@@ -57,4 +58,43 @@ const getMissingPhrases = async (req, res) => {
     }
 }
 
-export { createPhrase, searchPhrase, getMissingPhrases }
+
+const getAllPhrases = async (req, res) => {
+    try {
+        const phrasesData = await findAllPhrases();
+
+        successResponseWithData(res, statusCodes.success, messages.found, phrasesData);
+    }catch(error) {
+        errorResponse(res, error.statusCode || statusCodes.serverError, error);
+    }
+}
+
+const editPhrase = async (req, res) => {
+    try {
+        const { english, yor_explanation, yor_spoken, yor_intonation, yor_video, _id } = req.body;
+
+        const phraseObj = {
+            english, yor_explanation, yor_intonation, yor_spoken, yor_video, _id 
+        };
+
+        const updatedPhraseData = await updatePhrase(phraseObj);
+
+        successResponseWithData(res, statusCodes.success, messages.updated, updatedPhraseData);
+    }catch(error) {
+        errorResponse(res, error.statusCode || statusCodes.serverError, error);
+    }
+}
+
+const removePhrase = async (req, res) => {
+    try {
+        const { _id } = req.body;
+
+        const deletedPhraseData = await deletePhrase(_id);
+
+        successResponseWithData(res, statusCodes.success, messages.deleted, deletedPhraseData);
+    }catch(error) {
+        errorResponse(res, error.statusCode || statusCodes.serverError, error);
+    }
+}
+
+export { createPhrase, searchPhrase, getMissingPhrases, getAllPhrases, editPhrase, removePhrase }
