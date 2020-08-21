@@ -1,9 +1,12 @@
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 import { userModel } from '../database/model';
-import { successResponseWithData, errorResponse } from '../utils/response';
+import { successResponseWithData, errorResponse, successResponse } from '../utils/response';
 import statusCodes from '../utils/status';
 import messages from '../utils/message';
 import { findUser } from '../services/auth';
+
+dotenv.config();
 
 const createUser = async (req, res) => {
     try {
@@ -38,8 +41,11 @@ const loginUser = async (req, res) => {
         const match = await bcrypt.compare(password, userData.password);
 
         if (!match ) {
-            errorResponse(res, error.statusCode || statusCodes.unauthorized, messages.wrongPassword);
+            errorResponse(res, statusCodes.unauthorized, messages.wrongPassword);
         }
+
+        req.session.userId = userData._id;
+        req.session.userRole = userData.role;
 
         successResponseWithData(res, statusCodes.success, messages.login, userData);
 
@@ -48,4 +54,16 @@ const loginUser = async (req, res) => {
     }
 }
 
-export { createUser, loginUser }
+const logoutUser = (req, res) => {
+    req.session.destroy( error => {
+        if(error){
+            errorResponse(res, statusCodes.serverError, messages.logoutError);
+        }
+
+        res.clearCookie(process.env.SESS_NAME);
+
+        successResponse(res, statusCodes.success, messages.logout)
+    })
+}
+
+export { createUser, loginUser, logoutUser }
